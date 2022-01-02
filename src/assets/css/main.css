@@ -5,12 +5,17 @@
 /**************************/
 
 :root {
-  --primary: #4f515a;
-  --secondary: #ebebeb;
-  --warning: #da0f41;
+  --primary: #404040;
+  --secondary: #40aadd;
+  --third: #506bbb;
+  --fourth: #fafafa;
+  --fifth: #eeeeee;
+  --sixth: #aaa;
+  --warning: #ff1a1a;
 }
 
 * {
+  font-family: 'Jost', sans-serif;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -29,15 +34,15 @@ html {
   overflow-x: hidden;
   /* Does NOT work on Safari */
   /* scroll-behavior: smooth; */
-  background: #fafafa;
+  word-break: break-word;
 }
 
 body {
   /* Only works if there is nothing absolutely positioned in relation to body */
   overflow-x: hidden;
-  font-family: 'Jost', sans-serif;
   line-height: 1;
   font-weight: 400;
+  background: var(--fourth);
 }
 
 p {
@@ -103,11 +108,126 @@ small,
 }
 
 hr {
-  background: #000;
+  background: var(--primary);
   padding: 0;
   height: 1px;
   border: none;
-  margin: 1.2rem 0;
+  margin: 1rem 0;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: not-allowed !important;
+}
+
+/**************************/
+/* SPACING */
+/**************************/
+
+/* PADDING */
+.pt-0 {
+  padding-top: 0rem !important;
+}
+.pt-2 {
+  padding-top: 2rem !important;
+}
+.pt-4 {
+  padding-top: 4rem !important;
+}
+.pt-6 {
+  padding-top: 6rem !important;
+}
+
+.pl-0 {
+  padding-left: 0rem !important;
+}
+.pl-2 {
+  padding-left: 2rem !important;
+}
+.pl-4 {
+  padding-left: 4rem !important;
+}
+.pl-6 {
+  padding-left: 6rem !important;
+}
+
+.pb-0 {
+  padding-bottom: 0rem !important;
+}
+.pb-2 {
+  padding-bottom: 2rem !important;
+}
+.pb-4 {
+  padding-bottom: 4rem !important;
+}
+.pb-6 {
+  padding-bottom: 6rem !important;
+}
+
+.pr-0 {
+  padding-right: 0rem !important;
+}
+.pr-2 {
+  padding-right: 2rem !important;
+}
+.pr-4 {
+  padding-right: 4rem !important;
+}
+.pr-6 {
+  padding-right: 6rem !important;
+}
+
+/* MARGIN */
+.mt-0 {
+  margin-top: 0rem !important;
+}
+.mt-2 {
+  margin-top: 2rem !important;
+}
+.mt-4 {
+  margin-top: 4rem !important;
+}
+.mt-6 {
+  margin-top: 6rem !important;
+}
+
+.ml-0 {
+  margin-left: 0rem !important;
+}
+.ml-2 {
+  margin-left: 2rem !important;
+}
+.ml-4 {
+  margin-left: 4rem !important;
+}
+.pl-6 {
+  margin-left: 6rem !important;
+}
+
+.mb-0 {
+  margin-bottom: 0rem !important;
+}
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+.mb-4 {
+  margin-bottom: 4rem !important;
+}
+.mb-6 {
+  margin-bottom: 6rem !important;
+}
+
+.mr-0 {
+  margin-right: 0rem !important;
+}
+.mr-2 {
+  margin-right: 2rem !important;
+}
+.mr-4 {
+  margin-right: 4rem !important;
+}
+.mr-6 {
+  margin-right: 6rem !important;
 }
 
 /**************************/
@@ -115,20 +235,20 @@ hr {
 /**************************/
 
 a:link {
-  color: brown;
+  color: var(--secondary);
   text-decoration: none;
 }
 
 a:visited {
-  color: brown;
+  color: var(--secondary);
 }
 
 a:hover {
-  color: #000;
+  color: var(--third);
 }
 
 a:active {
-  color: brown;
+  color: var(--secondary);
   outline: none;
 }
 
@@ -140,7 +260,7 @@ a:active {
 .btn:link,
 .btn:visited {
   display: inline-block;
-  background-color: #000;
+  background: var(--secondary);
   color: #fff;
 
   text-decoration: none;
@@ -151,46 +271,48 @@ a:active {
   /* Only necessary for .btn */
   border: none;
   cursor: pointer;
-  font-family: inherit;
 
   /* Put transition on original "state" */
   transition: all 0.2s;
 }
 
-.btn,
 .btn:hover,
 .btn:active {
-  background-color: brown;
+  background: var(--third);
   color: #fff;
 }
 
 /* Modifier */
 .btn--outline,
-.btn--outline:link {
-  box-shadow: inset 0 0 0 2px brown;
-  background-color: #fff;
-  color: #000;
+.btn--outline:link,
+.btn--outline:visited {
+  box-shadow: inset 0 0 0 2px var(--secondary);
+  background: var(--fourth);
+  color: var(--primary);
 }
-.btn--top-margin {
-  margin: 2rem 0 0 0;
+.btn--outline:hover {
+  box-shadow: none;
+  background: var(--third);
+  color: #fff;
+}
+.btn--outline:active {
+  box-shadow: inset 0 0 0 2px var(--secondary);
+  background: var(--fourth);
+  color: var(--primary);
 }
 
-button:disabled {
-  opacity: 0.5;
-  color: var(--primary);
-  cursor: not-allowed;
-}
 /**************************/
 /* HEADER & NAVIGATION */
 /**************************/
 
 .header {
-  background-color: #fff;
+  background: var(--fifth);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 9.6rem;
+  height: 10.6rem;
   padding: 0 4.8rem;
+  margin: 0 0 8rem 0;
   position: relative;
 }
 
@@ -200,24 +322,60 @@ button:disabled {
 
 .logo:link,
 .logo:visited {
-  color: #000;
-  font-size: 2rem;
+  color: var(--primary);
+  font-size: 4rem;
   font-weight: 500;
 }
 .logo:hover {
-  color: #000;
+  color: var(--primary);
 }
 .logo:active {
-  color: #000;
+  color: var(--primary);
 }
 
 /**************************/
 /* NAVIGATION */
 /**************************/
 
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.main-nav-list a:link,
+.main-nav-list a:visited,
+.main-nav-list button {
+  color: var(--secondary);
+  background: none;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0;
+}
+
+/* when holding click down on anchor tag */
+.main-nav-list a:active {
+  color: var(--secondary);
+}
+
+.main-nav-list a:hover,
+.main-nav-list button:hover,
+.main-nav-list .router-link-active,
+.main-nav-list .router-link-active:visited {
+  color: var(--third);
+}
+
 /**************************/
 /* GENERAL REUSABLE COMPONENTS */
 /**************************/
+
+section {
+  padding: 9.6rem 0;
+}
 
 .container {
   /* max-width: 120rem; */
@@ -226,27 +384,35 @@ button:disabled {
   padding: 0 3.2rem;
 }
 
-/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
-/**************************/
-/* BELOW 1200px (Landscape Tablets) */
-/**************************/
-
-@media (max-width: 75em) {
-  html {
-    /* 9px / 16px  */
-    font-size: 56.25%;
-  }
-
-  .grid {
-    column-gap: 4.8rem;
-    row-gap: 6.4rem;
-  }
-
-  .header {
-    padding: 0 3.2rem;
-  }
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
+.heading-primary {
+  font-size: 5.2rem;
+  line-height: 1.2;
+  margin: 4rem;
+  color: var(--fourth);
+}
+
+.heading-secondary {
+  font-size: 4.4rem;
+  line-height: 1.2;
+  margin-bottom: 9.6rem;
+}
+
+.heading-tertiary {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 3.2rem;
+}
+
+.margin-right-sm {
+  margin-right: 2rem !important;
+}
 /**************************/
 /* GRID REUSABLE */
 /**************************/
@@ -288,24 +454,110 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #000;
-  padding: 9.6rem 0;
+  background: var(--third);
+}
+
+/**************************/
+/* DOCUMENTS */
+/**************************/
+
+.single-document-in-documents {
+  border: 1px solid var(--fifth);
+  padding: 3.2rem 2.8rem 1.6rem 2.8rem;
+  overflow: hidden;
+  word-break: break-word;
+}
+.single-document-in-documents .single-document-cover-image {
+  object-fit: cover;
+  object-position: 50% 30%;
+  width: 100%;
+  height: 22rem;
+}
+
+.single-document-in-documents .single-document-user-name {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--sixth);
+  margin: 2rem 0 0 0;
+}
+
+.single-document-in-documents .single-document-cat-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.single-document-in-documents .single-document-cat-link {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 2rem 0 0 0;
+  letter-spacing: 0rem;
+}
+
+.single-document-in-documents .single-document-title {
+  word-break: normal;
+}
+.single-document-in-documents .single-document-description {
+  word-break: normal;
+}
+
+/**************************/
+/* DOCUMENT DETAILS */
+/**************************/
+
+.single-document {
+  padding: 3.2rem 2.8rem 1.6rem 2.8rem;
+  overflow: hidden;
+  word-break: break-word;
+}
+.single-document .single-document-cover-image {
+  object-fit: cover;
+  object-position: 50% 30%;
+  width: 100%;
+  height: 50rem;
+}
+
+.single-document .single-document-user-name {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--sixth);
+  margin: 2rem 0 0 0;
+}
+
+.single-document .single-document-cat-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+.single-document .single-document-cat-link {
+  font-size: 1rem;
+  font-style: italic;
+  margin: 2rem 0 0 0;
+  letter-spacing: 0rem;
+}
+
+.single-document .single-document-title {
+  word-break: normal;
+}
+.single-document .single-document-description {
+  word-break: normal;
 }
 
 /**************************/
 /* PRICING SECTION */
 /**************************/
 
-.section-pricing {
-  padding: 9.6rem 0;
-  word-break: break-word;
-}
-
 .pricing,
 .list {
-  border: 1px solid #000;
+  border: 1px solid var(--fifth);
   padding: 3.2rem 1.6rem 4.8rem 2.8rem;
   overflow: hidden;
+  word-break: break-word;
 }
 
 .list ul {
@@ -322,21 +574,62 @@ button:disabled {
 }
 
 /**************************/
+/* FORM ADD PLAYLIST */
+/**************************/
+
+.form-add-playlist {
+  max-width: 90rem;
+  border: 1px solid var(--fifth);
+  margin-top: 2rem;
+  border: none;
+  padding: 0;
+}
+
+/**************************/
+/* FORM CREATE */
+/**************************/
+
+.form-add-single-document-post {
+  max-width: 90rem;
+}
+.form-add-single-document-post .categories {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.form-add-single-document-post .single-category-pill span {
+  background: var(--secondary);
+  color: var(--fourth);
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/**************************/
+/* FORM ACCOUNT */
+/**************************/
+
+.form-account {
+  max-width: 90rem;
+}
+
+/**************************/
 /* FORM */
 /**************************/
 
 form {
-  max-width: 400px;
+  max-width: 50rem;
   margin: 0 auto;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 1px 2px 3px rgba(50, 50, 50, 0.05);
-  border: 1px solid var(--secondary);
-  background: white;
+  padding: 4rem;
+  border: 1px solid var(--fifth);
 }
 
 label {
-  color: #000;
   display: inline-block;
   margin: 1rem 0;
   text-transform: uppercase;
@@ -347,13 +640,11 @@ label {
 input,
 select {
   display: block;
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 1rem 2rem 1rem;
   width: 100%;
   box-sizing: border-box;
   border: none;
-  border-bottom: 1px solid #ddd;
-  color: #000;
-  font-family: inherit;
+  border: 1px solid var(--fifth);
 }
 input[type='checkbox'] {
   display: inline-block;
@@ -370,16 +661,40 @@ textarea {
   min-height: 200px;
   box-sizing: border-box;
   border: none;
-  border: 1px solid #ddd;
-  color: #000;
-  font-family: inherit;
+  border: 1px solid var(--fifth);
 }
 
 .error {
-  color: brown;
-  margin-top: 10px;
-  font-size: 1em;
+  color: var(--warning);
+  font-size: 1.6em;
   font-weight: bold;
+  min-height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin: 1rem 2rem;
+}
+
+form .input-required {
+  font-style: italic;
+  text-transform: lowercase;
+  color: var(--sixth);
+}
+
+/* file upload */
+form ::-webkit-file-upload-button {
+  border: 2px solid var(--primary);
+  background: var(--fourth);
+  color: var(--primary);
+  border-radius: 0;
+  padding: 1rem 1.6rem;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: inherit !important;
 }
 
 /**************************/
@@ -388,19 +703,40 @@ textarea {
 
 .footer {
   width: 100%;
-  padding: 1rem 1rem;
-  margin-top: 6rem;
-  border-top: 1px solid #000;
+  padding: 4rem 1rem;
+  margin-top: 10rem;
+  border-top: 1px solid var(--fifth);
 }
 
 .copyright {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 0;
 }
 
 /**************************/
 /* QUERY */
 /**************************/
+
+/* rem and em do NOT depend on html font-size in media queries! Instead, 1rem = 1em = 16px */
+/**************************/
+/* BELOW 1200px (Landscape Tablets) */
+/**************************/
+
+@media (max-width: 75em) {
+  html {
+    /* 9px / 16px  */
+    font-size: 56.25%;
+  }
+
+  .grid {
+    column-gap: 4.8rem;
+    row-gap: 6.4rem;
+  }
+
+  .header {
+    padding: 0 3.2rem;
+  }
+}
 
 /**************************/
 /* BELOW 944px (Tablets) */
@@ -432,5 +768,17 @@ textarea {
 @media (max-width: 34em) {
   .grid {
     row-gap: 4.8rem;
+  }
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 2.4rem 1.6rem;
   }
 }
