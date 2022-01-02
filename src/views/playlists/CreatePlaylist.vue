@@ -1,35 +1,37 @@
 <template>
   <h1>Create Playlist</h1>
   <section>
-    <form @submit.prevent="handleSubmit" class="form-add-single-document-post">
-      <h3>Create a new playlist</h3>
-      <label>Title <span class="input-required">(required)</span>:</label>
-      <input type="text" placeholder="Playlist title" v-model="title" required>
+    <div class="container">
+      <form @submit.prevent="handleSubmit" class="form-add-single-document-post">
+        <h3>Create a new playlist</h3>
+        <label>Title <span class="input-required">(required)</span>:</label>
+        <input type="text" placeholder="Playlist title" v-model="title" required>
 
-      <label>Description <span class="input-required">(required)</span>:</label>
-      <textarea placeholder="Playlist description..." v-model="description" required></textarea>
+        <label>Description <span class="input-required">(required)</span>:</label>
+        <textarea placeholder="Playlist description..." v-model="description" required></textarea>
 
-      <label>Categories (hit enter to add a tag) <span class="input-required">(required)</span>:</label>
-      <input v-model="category" type="text" @keydown.enter.prevent="handleCategories">
-      <div class="error">{{categoryError}}</div>
+        <label>Categories (hit enter to add a tag) <span class="input-required">(required)</span>:</label>
+        <input v-model="category" type="text" @keydown.enter.prevent="handleCategories">
+        <div class="error">{{categoryError}}</div>
 
-      <div class="categories">
-        <div v-for="category in categories" :key="category" class="single-category-pill">
-          <span @click="deleteCategory(category)">#{{category}}</span>
+        <div class="categories">
+          <div v-for="category in categories" :key="category" class="single-category-pill">
+            <span @click="deleteCategory(category)">#{{category}}</span>
+          </div>
         </div>
-      </div>
 
-      <label>Upload Playlist cover image <span class="input-required">(required)</span>:</label>
-      <input type="file" @change="handleImageChange">
-      <div class="error">{{fileError}}</div>
+        <label>Upload Playlist cover image <span class="input-required">(required)</span>:</label>
+        <input type="file" @change="handleImageChange">
+        <div class="error">{{fileError}}</div>
 
-      <div class="submit">
-        <button v-if="!isPending" class="btn mt-4">Create</button>
-        <button v-if="isPending" class="btn mt-4 disabled">Saving...</button>
-      </div>
-      <div class="error">{{error}}</div>
+        <div class="submit">
+          <button v-if="!isPending" class="btn mt-4">Create</button>
+          <button v-if="isPending" class="btn mt-4 disabled">Saving...</button>
+        </div>
+        <div class="error">{{error}}</div>
 
-    </form>
+      </form>
+    </div>
   </section>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
-  <main>
-    <h1>{{id}}</h1>
-    <section>
+  <h1>{{id}}</h1>
+  <section>
+    <div class="container">
       <div v-if="error" class="error">
         <h3>Could not fetch the data.</h3>
       </div>
@@ -31,8 +31,8 @@
         </article>
 
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </template>
 
 <script>

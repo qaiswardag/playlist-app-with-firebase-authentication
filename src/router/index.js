@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import Signup from '../views/auth/Signup.vue';
 import Login from '../views/auth/Login.vue';
 import Account from '../views/Account.vue';
+import EditAccount from '../views/auth/EditAccount.vue';
 import CreatePlaylist from '../views/playlists/CreatePlaylist.vue';
 import PlaylistDetails from '../views/playlists/PlaylistDetails.vue';
 import CategoryLists from '../views/playlists/CategoryLists.vue';
@@ -50,6 +51,12 @@ const routes = [
     path: '/account',
     name: 'Account',
     component: Account,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: '/edit-account',
+    name: 'EditAccount',
+    component: EditAccount,
     beforeEnter: requireAuth,
   },
   {

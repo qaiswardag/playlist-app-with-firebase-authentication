@@ -1,74 +1,75 @@
 <template>
-  <div class="error">{{error}}</div>
-  <div v-if="document" class="document-details">
-    <article class="single-document" :data-id="document.id">
-
-      <div class="grid grid--2-cols">
-        <div>
-          <img :src="document.coverUrl" :alt="document.title" class="single-document-cover-image">
-          <div class="entry">
-            <div class="entry-header">
-            </div>
-            <span class="single-document-user-name">{{document.userName}}</span>
-            <div class="single-document-cat-links">
-              <div v-for="category in document.categories" :key="category">
-                <router-link :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
-                  <a href="#" class="single-document-cat-link">{{category}}</a>
-                </router-link>
+  <section>
+    <div class="container">
+      <div class="error">{{error}}</div>
+      <div v-if="document" class="document-details">
+        <article class="single-document" :data-id="document.id">
+          <div class="grid grid--2-cols">
+            <div>
+              <img :src="document.coverUrl" :alt="document.title" class="single-document-cover-image">
+              <div class="entry">
+                <div class="entry-header">
+                </div>
+                <span class="single-document-user-name">{{document.userName}}</span>
+                <div class="single-document-cat-links">
+                  <div v-for="category in document.categories" :key="category">
+                    <router-link :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
+                      <a href="#" class="single-document-cat-link">{{category}}</a>
+                    </router-link>
+                  </div>
+                </div>
+                <h3 class="single-document-title">{{document.title}}</h3>
+                <p class="single-document-description">{{document.description}}</p>
               </div>
             </div>
-            <h3 class="single-document-title">{{document.title}}</h3>
-            <p class="single-document-description">{{document.description}}</p>
-          </div>
-        </div>
 
-        <div class="grid grid--1-cols">
-          <div v-if="ownership" class="edit-document">
-            <h3>Delete or edit document</h3>
-            <button @click="handleDelete" v-if="ownership && !isPending" class="btn">Delete document</button>
-            <button @click="handleDelete" v-if="ownership && isPending" class="btn">Deleting document...</button>
-          </div>
+            <div class="grid grid--1-cols">
+              <div class="song-list-document">
+                <h3>Song list</h3>
+                <div v-if="!document.songs.length">
+                  <h4>No songs have been added to this playlist yet.</h4>
+                  <p>Number of songs: {{document.songs.length}}</p>
+                </div>
 
-          <div class="song-list-document">
-            <h3>Song list</h3>
-            <div v-if="!document.songs.length">
-              <h4>No songs have been added to this playlist yet.</h4>
-              <p>Number of songs: {{document.songs.length}}</p>
-            </div>
+                <div v-if="document.songs.length">
+                  <p>Number of songs: {{document.songs.length}}</p>
+                </div>
 
-            <div v-if="document.songs.length">
-              <p>Number of songs: {{document.songs.length}}</p>
-            </div>
-
-            <div class="songs grid grid--2-cols">
-              <div v-for="song in document.songs" :key="song.id" class="single-song">
-                <button v-if="ownership" @click="handleDeleteSong(song.id)" class="btn btn--delete">Delete song</button>
-                <div class="song-details">
-                  <h4>
-                    Song title: {{song.title}}
-                  </h4>
-                  <p>
-                    Artist: {{song.artist}}
-                  </p>
+                <div class="songs grid grid--2-cols">
+                  <div v-for="song in document.songs" :key="song.id" class="single-song">
+                    <button v-if="ownership" @click="handleDeleteSong(song.id)" class="btn btn--delete">Delete song</button>
+                    <div class="song-details">
+                      <h4>
+                        Song title: {{song.title}}
+                      </h4>
+                      <p>
+                        Artist: {{song.artist}}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              <div v-if="ownership" class="add-song-document">
+                <h3>Add songs</h3>
+                <button @click="showAddSongForm = !showAddSongForm" v-if="!showAddSongForm" class="btn">Show form</button>
+                <button @click="showAddSongForm = !showAddSongForm" v-if="showAddSongForm" class="btn">Hide form</button>
+                <AddSong v-if="ownership && showAddSongForm" :document="document"></AddSong>
+              </div>
+
+              <div v-if="ownership" class="edit-document">
+                <h3>Delete or edit document</h3>
+                <button @click="handleDelete" v-if="ownership && !isPending" class="btn">Delete document</button>
+                <button @click="handleDelete" v-if="ownership && isPending" class="btn">Deleting document...</button>
+              </div>
             </div>
 
           </div>
 
-          <div v-if="ownership" class="add-song-document">
-            <h3>Add songs</h3>
-            <button @click="showAddSongForm = !showAddSongForm" v-if="!showAddSongForm" class="btn">Show form</button>
-            <button @click="showAddSongForm = !showAddSongForm" v-if="showAddSongForm" class="btn">Hide form</button>
-            <AddSong v-if="ownership && showAddSongForm" :document="document"></AddSong>
-          </div>
-
-        </div>
-
+        </article>
       </div>
-
-    </article>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -160,7 +161,15 @@ export default {
 }
 
 .btn--delete {
-  padding: 0.8rem 0.8rem;
+  padding: 0.8rem 0rem;
   font-size: 1.2rem;
+  color: var(--first);
+  background: transparent;
+}
+.btn--delete:hover {
+  padding: 0.8rem 0rem;
+  font-size: 1.2rem;
+  color: var(--first);
+  background: transparent;
 }
 </style>

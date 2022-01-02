@@ -1,27 +1,31 @@
 <template>
   <h1>Signup</h1>
   <section>
-    <form @submit.prevent="handleSubmit">
-      <h3>Sign up</h3>
-      <label>Display name:</label>
-      <input type="text" placeholder="display name" required v-model="displayName">
+    <div class="container">
+      <form @submit.prevent="handleSubmit">
+        <h3>Sign up</h3>
+        <label>Display name:</label>
+        <input type="text" placeholder="display name" required v-model="displayName">
 
-      <label>Email:</label>
-      <input type="email" placeholder="Email" required v-model="email">
+        <label>Email:</label>
+        <input type="email" placeholder="Email" required v-model="email">
 
-      <label>Password:</label>
-      <input type="password" placeholder="password" required v-model="password">
+        <label>Password:</label>
+        <input type="password" placeholder="password" required v-model="password">
 
-      <div class="terms">
-        <input type="checkbox">
-        <label>Accept terms and conditions</label>
-      </div>
-      <div class="submit">
-        <button v-if="!isPending" class="btn mt-4">Signup</button>
-        <button v-if="isPending" class="btn mt-4">Signing up...</button>
-      </div>
-      <div class="error">{{error}}</div>
-    </form>
+        <div class="terms">
+          <input type="checkbox">
+          <label>Accept terms and conditions</label>
+        </div>
+        <div class="submit">
+          <button v-if="!isPending" class="btn mt-4">Signup</button>
+          <button v-if="isPending" class="btn mt-4">Signing up...</button>
+          <p class="mt-2">Already have an account? <router-link :to="{name: 'Login'}">Log in.</router-link>
+          </p>
+        </div>
+        <div class="error">{{error}}</div>
+      </form>
+    </div>
   </section>
 </template>
 
