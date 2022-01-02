@@ -3,11 +3,11 @@
     <section>
       <div class="container">
         <div v-if="!user">
-          <h3>Sign up and create albums with your favorite songs.</h3>
+          <h3>Sign up and create Playlists with your favorite songs.</h3>
           <router-link class="btn" :to="{name: 'Signup'}">Sign up</router-link>
         </div>
         <div v-if="user">
-          <h3>Browse through the best albums from other users.</h3>
+          <h3>Browse through the best Playlists from other users.</h3>
           <router-link class="btn" :to="{name: 'CreatePlaylist'}">Create new Playlist</router-link>
         </div>
 

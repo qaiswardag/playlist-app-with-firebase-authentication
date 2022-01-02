@@ -646,6 +646,7 @@ select {
   box-sizing: border-box;
   border: none;
   border: 1px solid var(--fifth);
+  border-radius: 0;
 }
 input[type='checkbox'] {
   display: inline-block;
@@ -662,6 +663,7 @@ textarea {
   min-height: 200px;
   box-sizing: border-box;
   border: 1px solid var(--fifth);
+  border-radius: 0;
 }
 
 .error {
