@@ -156,7 +156,7 @@ export default {
 
 .single-song {
   background: var(--fourth);
-  border: 1px solid var(--secondary);
+  border: 4px solid var(--secondary);
   padding: 1rem 1rem;
 }
 

@@ -19,7 +19,7 @@
           <router-link :to="{name: 'Account'}" class="display-name">{{user.displayName}}</router-link>
         </div>
         <div v-if="user">
-          <button @click="handleClick">Log Out</button>
+          <button @click="handleClick">Log out</button>
         </div>
       </ul>
     </nav>

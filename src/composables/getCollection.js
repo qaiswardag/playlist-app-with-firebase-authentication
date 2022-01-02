@@ -8,7 +8,7 @@ const getCollection = (collection, query) => {
   // register the firestore collection reference
   let collectionRef = projectFirestore
     .collection(collection)
-    .orderBy('createdAt');
+    .orderBy('createdAt', 'desc');
 
   if (query) {
     collectionRef = collectionRef.where(...query);

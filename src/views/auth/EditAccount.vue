@@ -5,6 +5,8 @@
       <div class="container">
         <h3>Hi, {{user.displayName}}</h3>
         <h3>Email: {{user.email}}</h3>
+        <router-link :to="{name: 'Account'}" class="btn mb-4">Back to dashboard</router-link>
+        <hr>
         <h3>Edit your account</h3>
         <form @submit.prevent="handleSubmit" class="edit-account">
           <label>Display name:</label>
@@ -77,5 +79,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.email-not-verified {
+  color: red !important;
+}
+.email-verified {
+  color: green !important;
+}
 </style>
