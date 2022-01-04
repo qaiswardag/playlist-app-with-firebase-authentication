@@ -1,5 +1,5 @@
 <template>
-  <h1>Edit account</h1>
+  <h1 class="heading-primary">Edit account</h1>
   <div v-if="user">
     <section class="account">
       <div class="container">

@@ -1,5 +1,5 @@
 <template>
-  <h1>Create Playlist</h1>
+  <h1 class="heading-primary">Create Playlist</h1>
   <section>
     <div class="container">
       <form @submit.prevent="handleSubmit" class="form-add-single-document-post">
@@ -41,7 +41,7 @@ import useCollection from '../../composables/useCollection'
 import getUser from '../../composables/getUser'
 import { timestamp } from '../../firebase/config'
 import { useRouter } from 'vue-router'
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { MAX_CATEGORIES_TO_CHOSE } from '../../config/config'
 export default {
   setup() {

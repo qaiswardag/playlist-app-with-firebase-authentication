@@ -1,5 +1,5 @@
 <template>
-  <h1>{{id}}</h1>
+  <h1 class="heading-primary">{{id}}</h1>
   <section>
     <div class="container">
       <div v-if="error" class="error">

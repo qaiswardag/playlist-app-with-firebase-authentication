@@ -2,6 +2,7 @@
   <div class="home">
     <section>
       <div class="container">
+
         <div v-if="!user">
           <h3>Sign up and create Playlists with your favorite songs.</h3>
           <router-link class="btn" :to="{name: 'Signup'}">Sign up</router-link>
@@ -50,11 +51,22 @@
 <script>
 import getCollection from '../composables/getCollection'
 import getUser from '@/composables/getUser'
+import { ref } from '@vue/reactivity'
+//
+//
+//
+//
+//
+//
+
 export default {
   name: 'Home',
   setup() {
+    //
     const { user } = getUser()
     const { error, documents } = getCollection('playlists')
+    //
+
     // return
     return { error, documents, user }
   },

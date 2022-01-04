@@ -1,8 +1,9 @@
 <template>
-  <h1>My account</h1>
+  <h1 class="heading-primary">My account</h1>
   <div v-if="user">
     <section class="account">
       <div class="container">
+
         <h3>Hi, {{user.displayName}}</h3>
         <h3>Email: {{user.email}}</h3>
         <router-link :to="{name: 'EditAccount'}" class="btn mb-4">Edit account</router-link>
