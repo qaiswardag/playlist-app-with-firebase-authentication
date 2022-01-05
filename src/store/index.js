@@ -7,7 +7,4 @@ export default createStore({
   state: {
     userCurrent: getUser(),
   },
-  mutations: { clearImmediate },
-  actions: {},
-  modules: {},
 });
