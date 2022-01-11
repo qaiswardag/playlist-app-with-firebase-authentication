@@ -341,16 +341,27 @@ a:active {
 /* NAVIGATION */
 /**************************/
 
-.main-nav-list {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  gap: 4.8rem;
+.main-nav {
+  gap: 0rem !important;
+  row-gap: 1rem;
 }
 
-.main-nav-list a:link,
-.main-nav-list a:visited,
-.main-nav-list button {
+nav .text-base {
+  font-size: 1.6rem;
+  line-height: 1.5rem;
+  padding: 3rem 3rem;
+}
+
+.sign-up-button {
+  color: #fff !important;
+  background: var(--secondary) !important;
+  text-align: center;
+  padding: 1.5rem 1rem !important;
+}
+
+a:link,
+a:visited,
+button {
   color: var(--secondary);
   background: none;
   display: inline-block;
@@ -361,16 +372,27 @@ a:active {
   letter-spacing: 0;
 }
 
-/* when holding click down on anchor tag */
-.main-nav-list a:active {
-  color: var(--secondary);
+.mobile-menu {
+  border: 2px solid var(--secondary);
 }
 
-.main-nav-list a:hover,
-.main-nav-list button:hover,
-.main-nav-list .router-link-active,
-.main-nav-list .router-link-active:visited {
-  color: var(--third);
+/* when holding click down on anchor tag */
+a:active {
+  color: var(--secondary);
+}
+/* sign out link */
+#sign-out-link {
+  color: var(--secondary) !important;
+}
+#sign-out-link:hover {
+  color: var(--third) !important;
+}
+
+nav a:hover,
+nav button:hover,
+nav .router-link-active,
+nav .router-link-active:visited {
+  color: var(--third) !important;
 }
 
 /**************************/
@@ -378,7 +400,7 @@ a:active {
 /**************************/
 
 section {
-  padding: 9.6rem 0;
+  padding: 1.6rem 0;
 }
 
 .container {
@@ -783,5 +805,13 @@ form ::-webkit-file-upload-button {
   .btn:link,
   .btn:visited {
     padding: 2.4rem 1.6rem;
+  }
+}
+
+@media (max-width: 34em) {
+  .btn,
+  .btn:link,
+  .btn:visited {
+    padding: 1.4rem 1.6rem;
   }
 }
