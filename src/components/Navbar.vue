@@ -46,6 +46,13 @@
 
           </div>
         </div>
+
+        <hr>
+
+        <div v-if="user">
+          <p>{{user}}</p>
+        </div>
+
       </div>
 
       <transition enter-active-class="duration-200 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="duration-100 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
@@ -107,10 +114,6 @@
 
 
 <script>
-import useLogout from '@/composables/useLogout'
-import { useRouter } from 'vue-router'
-// import { useStore } from 'vuex'
-
 import {
   Popover,
   PopoverButton,
@@ -120,6 +123,10 @@ import {
 import { MenuIcon, XIcon } from '@heroicons/vue/outline'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
 import { computed } from '@vue/reactivity'
+
+import useLogout from '@/composables/useLogout'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default {
   components: {
@@ -136,12 +143,13 @@ export default {
     const router = useRouter()
     //
     //
-
+    const store = useStore()
     //
+    // computed
     const user = computed(() => {
-      // return store.state.user
+      console.log('function computed ran')
+      return store.state.user
     })
-    //
     //
     //
     //
@@ -154,7 +162,6 @@ export default {
         console.log('Logged out successfully')
       }
     }
-    //
     //
     //
     //
