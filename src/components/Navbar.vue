@@ -37,6 +37,12 @@
             <div v-if="user">
               <router-link :to="{name: 'Account'}" class="display-name text-base font-medium text-gray-500 hover:text-gray-900">{{user.displayName}}</router-link>
             </div>
+
+            <div v-if="user">
+              {{number}}
+              <button @click="increase" class="btn">increase me</button>
+            </div>
+
             <div v-if="user">
               <router-link @click="handleClick" to="#" id="sign-out-link" class="text-base font-medium text-gray-500 hover:text-gray-900">Log out</router-link>
             </div>
@@ -46,13 +52,6 @@
 
           </div>
         </div>
-
-        <hr>
-
-        <div v-if="user">
-          <p>{{user}}</p>
-        </div>
-
       </div>
 
       <transition enter-active-class="duration-200 ease-out" enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100" leave-active-class="duration-100 ease-in" leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
@@ -122,7 +121,7 @@ import {
 } from '@headlessui/vue'
 import { MenuIcon, XIcon } from '@heroicons/vue/outline'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
-import { computed } from '@vue/reactivity'
+import { computed, isRef, ref } from '@vue/reactivity'
 
 import useLogout from '@/composables/useLogout'
 import { useRouter } from 'vue-router'
@@ -138,18 +137,41 @@ export default {
     MenuIcon,
     XIcon,
   },
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
   setup() {
+    // store
+    const store = useStore()
+    //
+    //
+    //
+    const number = store.state.number
+    //
+    const increase = function () {
+      store.commit('updataNumber', 10)
+    }
+    //
+    //
     const { error, logout, isPending } = useLogout()
     const router = useRouter()
     //
     //
-    const store = useStore()
+    //
+    //
     //
     // computed
     const user = computed(() => {
       console.log('function computed ran')
       return store.state.user
     })
+    //
+    //
     //
     //
     //
@@ -169,9 +191,10 @@ export default {
     //
     //
     return {
+      increase,
+      number,
       user,
       handleClick,
-      user,
       isPending,
     }
   },

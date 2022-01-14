@@ -10,8 +10,11 @@ const { user } = getUser();
 const { updateUserDetails } = useUser();
 
 const store = createStore({
+  // strict: true,
   state: {
+    number: 9000,
     user: null,
+
     // authIsReady: look do we know the user who just loaded the page is logged in or logged out
     // until we do that until we get the response - we can't really say if user is logged in or not
     // so until that response the authIsReady is false
@@ -19,7 +22,18 @@ const store = createStore({
     authIsReady: false,
   },
   mutations: {
+    //
+    updataNumber(state, payload) {
+      state.number = payload;
+      console.log('seæ', state.number);
+    },
+    //
+    //
+    //
+    //
+    //
     setUser(state, payload) {
+      console.log('også', payload);
       state.user = payload;
     },
     //
