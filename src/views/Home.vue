@@ -4,11 +4,11 @@
       <div class="container">
 
         <div v-if="!user">
-          <h3>Sign up and create Playlists with your favorite songs.</h3>
+          <h1 style="text-align:left" class="heading-primary ml-0">Sign up and create Playlists with your favorite songs</h1>
           <router-link class="btn" :to="{name: 'Signup'}">Sign up</router-link>
         </div>
         <div v-if="user">
-          <h3>Browse through the best Playlists from other users.</h3>
+          <h1 style="text-align:left" class="heading-primary ml-0 text-left">Browse through the best Playlists from other users.</h1>
           <router-link class="btn" :to="{name: 'CreatePlaylist'}">Create new Playlist</router-link>
         </div>
 
@@ -26,13 +26,15 @@
               <div class="entry-header">
               </div>
               <span class="single-document-user-name">{{document.userName}}</span>
+
               <div class="single-document-cat-links">
                 <div v-for="category in document.categories" :key="category">
-                  <router-link :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
-                    <a href="#" class="single-document-cat-link">{{category}}</a>
+                  <router-link @click="updatePlaylistCategory(category)" :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
+                    <a href="#" class="single-document-cat-link">#{{category}}</a>
                   </router-link>
                 </div>
               </div>
+
               <router-link :to="{name: 'PlaylistDetails', params: {id: `${document.id}`}}">
                 <h3 class="single-document-title">{{document.title}}</h3>
               </router-link>
@@ -51,7 +53,7 @@
 <script>
 import getCollection from '../composables/getCollection'
 import getUser from '@/composables/getUser'
-import { ref } from '@vue/reactivity'
+import { useStore } from 'vuex'
 //
 //
 //
@@ -63,12 +65,20 @@ export default {
   name: 'Home',
   setup() {
     //
+    // store
+    const store = useStore()
+    //
     const { user } = getUser()
     const { error, documents } = getCollection('playlists')
     //
-
+    //
+    //
+    // mutation: update playlist category
+    const updatePlaylistCategory = function (category) {
+      store.commit('updatePlaylistCategory', category)
+    }
     // return
-    return { error, documents, user }
+    return { error, documents, user, updatePlaylistCategory }
   },
 }
 </script>

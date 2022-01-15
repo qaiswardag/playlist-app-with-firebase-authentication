@@ -20,10 +20,17 @@ const store = createStore({
     // so until that response the authIsReady is false
     // when we get the response then we gonna change the authIsReady to true
     authIsReady: false,
+    //
+    //
+    // current category
+    playlistCategory: null,
   },
   mutations: {
     //
-    //
+    // update playlist category
+    updatePlaylistCategory(state, payload) {
+      state.playlistCategory = payload;
+    },
     //
     //
     setUser(state, payload) {

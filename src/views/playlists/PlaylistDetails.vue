@@ -11,13 +11,15 @@
                 <div class="entry-header">
                 </div>
                 <span class="single-document-user-name">{{document.userName}}</span>
+
                 <div class="single-document-cat-links">
                   <div v-for="category in document.categories" :key="category">
-                    <router-link :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
-                      <a href="#" class="single-document-cat-link">{{category}}</a>
+                    <router-link @click="updatePlaylistCategory(category)" :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
+                      <a href="#" class="single-document-cat-link">#{{category}}</a>
                     </router-link>
                   </div>
                 </div>
+
                 <h3 class="single-document-title">{{document.title}}</h3>
                 <p class="single-document-description">{{document.description}}</p>
               </div>
@@ -80,12 +82,14 @@ import getUser from '@/composables/getUser'
 import { computed, ref } from '@vue/reactivity'
 import { useRouter } from 'vue-router'
 import AddSong from '@/components/AddSong.vue'
+import { useStore } from 'vuex'
 
 //
 export default {
   props: ['id'],
   components: { AddSong },
   setup(props) {
+    const store = useStore()
     const { error, document } = getDocument('playlists', props.id)
     const { user } = getUser()
     const { deleteDoc, isPending, updateDoc } = useDocument(
@@ -103,6 +107,14 @@ export default {
         user.value?.uid === document.value.userId
       )
     })
+    //
+    //
+    // mutation: update playlist category
+    const updatePlaylistCategory = function (category) {
+      store.commit('updatePlaylistCategory', category)
+    }
+    //
+    //
 
     const handleDelete = async function () {
       isPending.value = true
@@ -121,6 +133,7 @@ export default {
     }
 
     return {
+      updatePlaylistCategory,
       error,
       document,
       ownership,

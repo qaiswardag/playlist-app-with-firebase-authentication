@@ -31,13 +31,15 @@
               <div class="entry-header">
               </div>
               <span class="single-document-user-name">{{document.userName}}</span>
+
               <div class="single-document-cat-links">
                 <div v-for="category in document.categories" :key="category">
-                  <router-link :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
-                    <a href="#" class="single-document-cat-link">{{category}}</a>
+                  <router-link @click="updatePlaylistCategory(category)" :to="{name: 'CategoryLists', params: {id: category.toLowerCase().replace(/ /g, '+')}}">
+                    <a href="#" class="single-document-cat-link">#{{category}}</a>
                   </router-link>
                 </div>
               </div>
+
               <router-link :to="{name: 'PlaylistDetails', params: {id: `${document.id}`}}">
                 <h3 class="single-document-title">{{document.title}}</h3>
               </router-link>
@@ -55,8 +57,11 @@
 <script>
 import getUser from '@/composables/getUser'
 import getCollection from '@/composables/getCollection'
+import { useStore } from 'vuex'
 export default {
   setup() {
+    // store
+    const store = useStore()
     // get user details
     const { user, isPending, error } = getUser()
     //
@@ -67,8 +72,17 @@ export default {
       '==',
       user.value.uid,
     ])
+    //
+    //
+    //
+    //
+    // mutation: update playlist category
+    const updatePlaylistCategory = function (category) {
+      store.commit('updatePlaylistCategory', category)
+    }
 
     return {
+      updatePlaylistCategory,
       documents,
       user,
       isPending,

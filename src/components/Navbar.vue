@@ -87,16 +87,17 @@
 
               </div>
 
-              <a href="#" class="sign-up-button w-full flex items-center justify-center px-4 py-6 mt-4 mb-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">
-                Sign up
-              </a>
-              <p class="mt-3 text-center text-gray-500">
-                Existing customer?
-                {{ ' ' }}
-                <a href="#" class="text-indigo-600 hover:text-indigo-500">
-                  Sign in
-                </a>
-              </p>
+              <div v-if="!user">
+                <router-link :to="{name: 'Signup'}" class="sign-up-button w-full flex items-center justify-center px-4 py-6 mt-4 mb-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700">Sign up</router-link>
+              </div>
+
+              <div class="mt-1 text-center text-gray-500">
+                <div v-if="!user">
+                  Existing customer?
+                  {{ ' ' }}
+                  <router-link :to="{name: 'Login'}" class="text-indigo-600 hover:text-indigo-500">Log in</router-link>
+                </div>
+              </div>
 
             </div>
           </div>
