@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import { createStore } from 'vuex';
 import { projectAuth } from '../firebase/config';
 import useUser from '@/composables/useUser';
@@ -12,7 +13,6 @@ const { updateUserDetails } = useUser();
 const store = createStore({
   // strict: true,
   state: {
-    number: 9000,
     user: null,
 
     // authIsReady: look do we know the user who just loaded the page is logged in or logged out
@@ -23,17 +23,10 @@ const store = createStore({
   },
   mutations: {
     //
-    updataNumber(state, payload) {
-      state.number = payload;
-      console.log('seæ', state.number);
-    },
-    //
-    //
     //
     //
     //
     setUser(state, payload) {
-      console.log('også', payload);
       state.user = payload;
     },
     //

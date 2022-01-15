@@ -39,11 +39,6 @@
             </div>
 
             <div v-if="user">
-              {{number}}
-              <button @click="increase" class="btn">increase me</button>
-            </div>
-
-            <div v-if="user">
               <router-link @click="handleClick" to="#" id="sign-out-link" class="text-base font-medium text-gray-500 hover:text-gray-900">Log out</router-link>
             </div>
 
@@ -121,11 +116,13 @@ import {
 } from '@headlessui/vue'
 import { MenuIcon, XIcon } from '@heroicons/vue/outline'
 import { ChevronDownIcon } from '@heroicons/vue/solid'
-import { computed, isRef, ref } from '@vue/reactivity'
 
 import useLogout from '@/composables/useLogout'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+//
+import { computed, ref } from '@vue/reactivity'
+import { watch } from '@vue/runtime-core'
 
 export default {
   components: {
@@ -138,39 +135,28 @@ export default {
     XIcon,
   },
   //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
   setup() {
     // store
     const store = useStore()
-    //
-    //
-    //
-    const number = store.state.number
-    //
-    const increase = function () {
-      store.commit('updataNumber', 10)
-    }
-    //
     //
     const { error, logout, isPending } = useLogout()
     const router = useRouter()
     //
     //
     //
-    //
-    //
     // computed
     const user = computed(() => {
-      console.log('function computed ran')
       return store.state.user
     })
     //
+    // watch
+    // const user = ref(store.state.user)
+    // watch(user, (currentValue, oldValue) => {
+    //   console.log('old:', currentValue)
+    //   console.log('new', oldValue)
+    //   //
+    //   user.value = store.state.user
+    // })
     //
     //
     //
@@ -186,13 +172,7 @@ export default {
     }
     //
     //
-    //
-    //
-    //
-    //
     return {
-      increase,
-      number,
       user,
       handleClick,
       isPending,

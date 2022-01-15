@@ -34,14 +34,16 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
+import { computed, ref } from '@vue/reactivity'
 import { useStore } from 'vuex'
 export default {
   setup() {
     const store = useStore()
     //
-    const user = store.state.user
-    // get user details
+    // computed
+    const user = computed(() => {
+      return store.state.user
+    })
 
     //
     const displayNewName = ref('')
@@ -55,6 +57,10 @@ export default {
         displayNewName: displayNewName.value,
         displayNewEmail: displayNewEmail.value,
       })
+      //
+      //
+      //
+      displayNewName.value = ''
     }
 
     return {
