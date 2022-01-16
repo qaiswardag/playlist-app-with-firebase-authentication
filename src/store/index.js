@@ -74,30 +74,6 @@ projectAuth.onAuthStateChanged((user) => {
   }
 });
 //
-//
-//
-// const unsub = projectAuth.onAuthStateChanged((user) => {
-//   store.commit('setAuthIsReady', true);
-//   store.commit('setUser', user);
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.Use
-//     console.log('1 her', user);
-//   } else {
-//     store.commit('setUser', user);
-//     console.log('user is signed out');
-//     console.log('2', user);
-//   }
-//   unsub();
-// });
-//
-//
-//
-//
-//
-// when we load to the page we need to run code telling firebase are we logged in or not?
-//  they respond with a response. If we are logged in the response will contain the user
-// then we can update user state with current user
 
 // export the store
 export default store;
