@@ -12,8 +12,8 @@ import './assets/css/main.css';
 // call back function will fire ever time firebase detect a change in authentication
 //  however it will fire initially when it first detects if user is logged in or out
 // and first at this point we want to mount the application
+// but we just want to do it once:
 
-// but we just want to do it once
 let app;
 
 projectAuth.onAuthStateChanged(() => {
@@ -21,3 +21,5 @@ projectAuth.onAuthStateChanged(() => {
     app = createApp(App).use(store).use(router).mount('#app');
   }
 });
+
+// createApp(App).use(store).use(router).mount('#app');

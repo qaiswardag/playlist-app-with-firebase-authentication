@@ -9,11 +9,11 @@
         <hr>
         <h3>Edit your account</h3>
         <form @submit.prevent="handleSubmit" class="edit-account">
-          <label>Display name:</label>
+          <label>Change Display name:</label>
           <input type="text" :placeholder="user.displayName" v-model="displayNewName">
           <!-- <div class="error email-verified">{{confirmMessageUsername}}</div> -->
 
-          <label>Email:</label>
+          <label>Change Email:</label>
           <input type="email" :placeholder="user.email" v-model="displayNewEmail">
           <!-- <div :class="{'email-not-verified': !user.emailVerified, 'email-verified': user.emailVerified}" class="error">{{user.emailVerified? 'Email is verified.' : 'Email is not verified.'}}</div> -->
           <!-- <div class="error email-verified">{{confirmMessageEmail}}</div> -->
@@ -44,7 +44,7 @@ export default {
     const user = computed(() => {
       return store.state.user
     })
-
+    //
     //
     const displayNewName = ref('')
     const displayNewEmail = ref('')

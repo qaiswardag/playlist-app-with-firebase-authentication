@@ -2,7 +2,6 @@ import Vue from 'vue';
 import { createStore } from 'vuex';
 import { projectAuth } from '../firebase/config';
 import useUser from '@/composables/useUser';
-
 import getUser from '@/composables/getUser';
 
 // get user details
@@ -56,30 +55,41 @@ const store = createStore({
 
 // the callback function inside onAuthStateChanged will fire everytime there is a change in authentication state
 // and inside the callback function as an argument we get access to a user object
-// when the application first loads in the browser and say what is the user status.
+// when the application first loads in the browser the callback functions ask for user status
 // if user is not logged in then the user object will be null
+// if user is logged in then we will get usser data
 // wait until auth is ready
-
-// const unsub = onAuthStateChanged(auth, (user) => {
-//   store.commit('setAuthIsReady', true);
-//   store.commit('setUser', user);
-//   unsub();
-// });
-//
-//
-//
-const unsub = projectAuth.onAuthStateChanged((user) => {
+projectAuth.onAuthStateChanged((user) => {
+  store.commit('setAuthIsReady', true);
+  store.commit('setUser', user);
   if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.Use
-    store.commit('setAuthIsReady', true);
-    store.commit('setUser', user);
-    // ...
+    console.log(
+      'user is true. user display name is:',
+      store.state.user.displayName
+    );
   } else {
-    console.log('user is signed out');
+    console.log('user is false. user data is:', store.state.user);
   }
-  unsub();
 });
+//
+//
+//
+// const unsub = projectAuth.onAuthStateChanged((user) => {
+//   store.commit('setAuthIsReady', true);
+//   store.commit('setUser', user);
+//   if (user) {
+//     // User is signed in, see docs for a list of available properties
+//     // https://firebase.google.com/docs/reference/js/firebase.Use
+//     console.log('1 her', user);
+//   } else {
+//     store.commit('setUser', user);
+//     console.log('user is signed out');
+//     console.log('2', user);
+//   }
+//   unsub();
+// });
 //
 //
 //

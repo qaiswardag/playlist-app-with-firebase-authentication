@@ -8,7 +8,7 @@
           <router-link class="btn" :to="{name: 'Signup'}">Sign up</router-link>
         </div>
         <div v-if="user">
-          <h1 style="text-align:left" class="heading-primary ml-0 text-left">Browse through the best Playlists from other users.</h1>
+          <h1 style="text-align:left" class="heading-primary ml-0 text-left">Browse through the best Playlists from other users</h1>
           <router-link class="btn" :to="{name: 'CreatePlaylist'}">Create new Playlist</router-link>
         </div>
 
