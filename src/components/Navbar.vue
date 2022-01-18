@@ -167,7 +167,7 @@ export default {
     //
     // getters
     const user = computed(() => {
-      return store.getters.getUser.displayName
+      return store.state.user
     })
     //
     //
