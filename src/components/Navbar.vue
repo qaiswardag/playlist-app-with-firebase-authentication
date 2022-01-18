@@ -124,7 +124,9 @@ import useLogout from '@/composables/useLogout'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 //
-import { computed } from '@vue/reactivity'
+import { computed, watch } from '@vue/reactivity'
+import { mapGetters } from 'vuex'
+import getUser from '../composables/getUser'
 
 export default {
   components: {
@@ -137,6 +139,16 @@ export default {
     XIcon,
   },
   //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  // vue3 and composition api
   setup() {
     // store
     const store = useStore()
@@ -146,11 +158,21 @@ export default {
     //
     //
     //
-    //
     // computed
+    // const user = computed(() => {
+    //   return store.state.user
+    // })
+    //
+    //
+    //
+    // getters
     const user = computed(() => {
-      return store.state.user
+      return store.getters.getUser.displayName
     })
+    //
+    //
+    //
+    //
     //
     // watch
     // const user = ref(store.state.user)
@@ -160,6 +182,9 @@ export default {
     //   //
     //   user.value = store.state.user
     // })
+    //
+    //
+    //
     //
     //
     //

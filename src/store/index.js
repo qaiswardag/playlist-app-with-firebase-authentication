@@ -24,6 +24,13 @@ const store = createStore({
     // current category
     playlistCategory: null,
   },
+  //
+  getters: {
+    getUser(state) {
+      return state.user;
+    },
+  },
+  //
   mutations: {
     //
     // update playlist category
